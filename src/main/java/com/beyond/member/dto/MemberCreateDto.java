@@ -1,4 +1,4 @@
-package com.beyond.member.Dto;
+package com.beyond.member.dto;
 
 import com.beyond.member.domain.Member;
 import lombok.AllArgsConstructor;

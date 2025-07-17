@@ -1,15 +1,15 @@
-package com.beyond.member.Service;
+package com.beyond.member.service;
 
-import com.beyond.member.Dto.MemberCreateDto;
-import com.beyond.member.Dto.MemberDetailDto;
-import com.beyond.member.Dto.MemberListDto;
-import com.beyond.member.Repository.MemberJpaRepository;
+import com.beyond.member.dto.MemberCreateDto;
+import com.beyond.member.dto.MemberListDto;
+import com.beyond.member.repository.MemberJpaRepository;
 import com.beyond.member.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,9 +25,18 @@ public class MemberService {
 
 //    @Transactional(readOnly = true)
 //    public List<MemberListDto> findAll() {
+//        return (memberJpaRepository.findAll().stream().map(MemberListDto::listFromEntity).collect(Collectors.toList()));
 //
 //    }
-//
+    @Transactional(readOnly = true)
+    public List<MemberListDto> findAll() {
+        return memberJpaRepository.findAll()
+                .stream()
+                .map(MemberListDto::listFromEntity)
+                .collect(Collectors.toList());
+    }
+
+
 //    @Transactional(readOnly = true)
 //    public MemberDetailDto findById(Long id) {
 //
